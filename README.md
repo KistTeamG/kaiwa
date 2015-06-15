@@ -9,6 +9,8 @@
 
 ## デザイン担当
 - kakoda88
+- hounoki
+- yuripe
 
 # 使用言語
 - HTML
