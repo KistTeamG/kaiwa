@@ -3,5 +3,6 @@ body
 	background-color: #ffffff;
 	margin: 0}
 
-textarea#Reply {
-	width: 150px;}
+textarea{
+	width: 150px;
+	height: 100px;}
