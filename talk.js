@@ -4,26 +4,32 @@
 	var Goodmorning = 'おはようございます';
 	var Hello = 'こんにちは';
 	var Goodafternoon = 'こんばんは';
-	var reply;
 	
 /* メインメソッド */
 function tbox1(){
 	
-	if (comreply == Goodmorning || comreply == Hello || comreply == Goodafternoon){
-		reply = comReply();		/* 正しい挨拶なら正しい返答 */
+	document.Form.target = "_self";		/* そのページのまま表示 */
+	
+	if (document.Form.Talk.value =~ "おはよう" || document.Form.Talk.value =~ "こんにちは" || document.Form.Talk.value =~ "こんばんは"){
+		document.Form.Reply.value = comReply();
+		document.Form.Talk.value = null;
+	} else if (comreply == null){
+		document.Form.Reply.value = null;
 	}
 }
 
 
 /* 挨拶を判定するメソッド */
 function comReply(){
+	var reply;
 	
 	if (hours >= 5 && hours <= 10){
-		document.Form.Reply.value = 'おはようございます';
+		reply = 'おはようございます';
 	} else if (hours >= 11 && hours <= 17){
-		document.Form.Reply.value = 'こんにちは';
+		reply = 'こんにちは';
 	} else {
-		document.Form.Reply.value = 'こんばんは';
+		reply = 'こんばんは';
 	}
 	
+	return reply;
 }
