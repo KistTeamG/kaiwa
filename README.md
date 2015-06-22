@@ -16,6 +16,7 @@
 - HTML
 - CSS
 - Java Script
+- JQery
 
 # 方針
 - デザインをメインに簡単な会話プログラムを作る
