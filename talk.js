@@ -5,14 +5,23 @@
 /* メインメソッド */
 $(function() {
 	$("#tbox").click(function() {
-		if ($("#Talk").val().match("おはよう") || $("#Talk").val().match("こんにちは")|| $("#Talk").val().match("こんばんは")){
-			$("#Reply").val(comReply() + "\n")/* + Temperature()*/;
-		} else if (comreply == null || comreply == "\n"){
-			$("#Reply").val("なんですか？");
-		}
-		$("#Talk").val(null);
+		comTalk();
 	});
 });
+
+/* 返答メソッド */
+function comTalk(){
+	if ($("#Talk").val().match("おはよう") || $("#Talk").val().match("こんにちは")|| $("#Talk").val().match("こんばんは")){
+		$("#Reply").val(comReply() + "\n");
+	} else if ($("#Talk").val().match("暑") || $("#Talk").val().match("寒")){
+		$("#Reply").val(comTemp() + "\n");
+	} else if ($("#Talk").val().match(".*\n") || $("#Talk").val().match(".")){
+		$("#Reply").val("どうしましたか？");
+	} else if ($("#Talk").val(null) || $("#Talk").val("\n")){
+		$("#Reply").val("なんですか？");
+	}
+	$("#Talk").val(null);
+}
 
 /* 挨拶を判定するメソッド */
 function comReply(){
@@ -29,15 +38,19 @@ function comReply(){
 	return reply;
 }
 
-/* 気温に関するメソッド */
-function Temperature(){
-	uri = 'http://weather.livedoor.com/forecast/webservice/json/v1?city=170010';	/* 金沢の天気情報を取得 */
+
+/* 暑さを判定(ランダム)するメソッド */
+function comTemp(){
 	
-	var temperature = forecasts.temp;
+	var temp = Math.floor(Math.random() * 40);
 	var tempReply;
 	
-	if (temperature >= 26 || temperature <= 40){
-		tempReply = '暑い';
+	if (temp >= 30 && temp <= 40){
+		tempReply = '暑いです';
+	} else if (temp >= 20 && temp < 30){
+		tempReply = 'ちょうど良いです';
+	} else {
+		tempReply = '寒いです';
 	}
 	return tempReply;
 }
