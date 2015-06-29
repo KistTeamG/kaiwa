@@ -3,6 +3,7 @@
 	var comreply = $("#Reply").val();
 	var reply = ["おはよう", "こんにちは", "こんばんは"];
 	var temp = ["暑", "寒"];
+	var parting = ["おつかれ", "さようなら", "また"];
 	
 /* メインメソッド */
 $(function() {
@@ -13,14 +14,28 @@ $(function() {
 
 /* 返答メソッド */
 function comTalk(){
-	if ($("#Talk").val().match(reply[0]) || $("#Talk").val().match(reply[1])|| $("#Talk").val().match(reply[2])){
-		$("#Reply").val(comReply() + "\n");
-	} else if ($("#Talk").val().match(temp[0]) || $("#Talk").val().match(temp[1])){
-		$("#Reply").val(comTemp() + "\n");
-	} else if ($("#Talk").val().match(".*\n") || $("#Talk").val().match(".")){
+	
+	if ($("#Talk").val().match(".*\n") || $("#Talk").val().match(".")){
 		$("#Reply").val("どうしましたか？");
 	} else if ($("#Talk").val(null) || $("#Talk").val("\n")){
 		$("#Reply").val("なんですか？");
+	}
+	for (var i = 0; i < reply.length; i++){
+		if ($("#Talk").val().match(reply[i])){
+			$("#Reply").val(comReply() + "\n");
+		}
+	}
+	for (var i = 0; i < temp.length; i++){
+		if ($("#Talk").val().match(temp[i])){
+			$("#Reply").val(comTemp() + "\n");
+		}
+	}
+	
+	for (var i = 0; i < parting.length; i++){
+		if ($("#Talk").val().match(parting[i])){
+			$("#Reply").val("またね\n");
+			setTimeout('paseclose()', 6000);	/* 6秒後にタグを閉じる */
+		}
 	}
 	$("#Talk").val(null);
 }
@@ -55,4 +70,9 @@ function comTemp(){
 		tempReply = '寒いです';
 	}
 	return tempReply;
+}
+
+/* タグを閉じるメソッド */
+function paseclose(){
+		window.open('about:blank','_self').close();
 }
