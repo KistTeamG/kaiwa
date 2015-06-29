@@ -18,8 +18,5 @@
 - Java Script
 - JQery
 
-# 参考
-- https://github.com/padolsey-archive/jquery.fn/tree/master/cross-domain-ajax
-
 # 方針
 - デザインをメインに簡単な会話プログラムを作る

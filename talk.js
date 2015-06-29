@@ -1,6 +1,8 @@
 	var date = new Date();			/* 日時に関する情報を取得 */
 	var hours = date.getHours();	/* 何時か取得 */
 	var comreply = $("#Reply").val();
+	var reply = ["おはよう", "こんにちは", "こんばんは"];
+	var temp = ["暑", "寒"];
 	
 /* メインメソッド */
 $(function() {
@@ -11,9 +13,9 @@ $(function() {
 
 /* 返答メソッド */
 function comTalk(){
-	if ($("#Talk").val().match("おはよう") || $("#Talk").val().match("こんにちは")|| $("#Talk").val().match("こんばんは")){
+	if ($("#Talk").val().match(reply[0]) || $("#Talk").val().match(reply[1])|| $("#Talk").val().match(reply[2])){
 		$("#Reply").val(comReply() + "\n");
-	} else if ($("#Talk").val().match("暑") || $("#Talk").val().match("寒")){
+	} else if ($("#Talk").val().match(temp[0]) || $("#Talk").val().match(temp[1])){
 		$("#Reply").val(comTemp() + "\n");
 	} else if ($("#Talk").val().match(".*\n") || $("#Talk").val().match(".")){
 		$("#Reply").val("どうしましたか？");
