@@ -8,12 +8,11 @@
 	
 /* メインメソッド */
 $(function() {
+	$("#Reply").prop("disabled", true);
 	$("#tbox").click(function() {
 		setTimeout('autoTalk()', 10000);	/* 10秒ごとに話しかけてくる */
 		comTalk();
 	});
-	
-	setTimeout('paseclose()', 6000);	/* 6秒後にタグを閉じる */
 });
 
 /* 返答メソッド */
@@ -38,6 +37,7 @@ function comTalk(){
 	for (var i = 0; i < parting.length; i++){
 		if ($("#Talk").val().match(parting[i])){
 			$("#Reply").val("またね\n");
+			$("#tbox").prop("disabled", true);
 			setTimeout('paseClose()', 6000);	/* 6秒後にタグを閉じる */
 		}
 	}
@@ -76,6 +76,7 @@ function comTemp(){
 	return tempReply;
 }
 
+/* 自動で会話を行うメソッド */
 function autoTalk(){
 	var reply;
 	var rand = 0;
