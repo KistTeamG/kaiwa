@@ -13,6 +13,7 @@ textarea{
 	position: absolute;}
 
 .position2 {left: 20px;
+<<<<<<< HEAD
 	position: absolute;
 	top: -10px}
 
@@ -24,3 +25,10 @@ z-index: 1;
 width: 160px;
 border: none;
 resize: none}
+=======
+	position: absolute;}
+	
+#Reply {color: #000;
+	background-color: #fff;
+}
+>>>>>>> b6622009d28b28dde0aa5fbf59acd3d86a5dbddc
