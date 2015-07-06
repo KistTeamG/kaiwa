@@ -1,26 +1,45 @@
 	var date = new Date();			/* 日時に関する情報を取得 */
 	var hours = date.getHours();	/* 何時か取得 */
 	var comreply = $("#Reply").val();
-	var reply = ["おはよう", "こんにちは", "こんばんは"];
-	var temp = ["暑", "寒"];
+	var reply = ["おはよう", "こんにちは", "こんばんは"];	/* 挨拶の配列 */
+	var temp = ["暑", "寒"];	/* 暑さの配列 */
+	var parting = ["おつかれ", "さようなら", "また"];		/* 別れの配列 */
+	var autoReply = ["何してるの？", "学校楽しい？", "元気？"];	/* 自動会話の配列 */
 	
 /* メインメソッド */
 $(function() {
 	$("#tbox").click(function() {
+		setTimeout('autoTalk()', 10000);	/* 10秒ごとに話しかけてくる */
 		comTalk();
 	});
+	
+	setTimeout('paseclose()', 6000);	/* 6秒後にタグを閉じる */
 });
 
 /* 返答メソッド */
 function comTalk(){
-	if ($("#Talk").val().match(reply[0]) || $("#Talk").val().match(reply[1])|| $("#Talk").val().match(reply[2])){
-		$("#Reply").val(comReply() + "\n");
-	} else if ($("#Talk").val().match(temp[0]) || $("#Talk").val().match(temp[1])){
-		$("#Reply").val(comTemp() + "\n");
-	} else if ($("#Talk").val().match(".*\n") || $("#Talk").val().match(".")){
-		$("#Reply").val("どうしましたか？");
+	
+	if ($("#Talk").val().match(".*\n") || $("#Talk").val().match(".")){
+		$("#Reply").val("どうしたの？");
 	} else if ($("#Talk").val(null) || $("#Talk").val("\n")){
 		$("#Reply").val("なんですか？");
+	}
+	for (var i = 0; i < reply.length; i++){
+		if ($("#Talk").val().match(reply[i])){
+			$("#Reply").val(comReply() + "\n");
+		}
+	}
+	for (var i = 0; i < temp.length; i++){
+		if ($("#Talk").val().match(temp[i])){
+			$("#Reply").val(comTemp() + "\n");
+		}
+	}
+	
+	for (var i = 0; i < parting.length; i++){
+		if ($("#Talk").val().match(parting[i])){
+			$("#Reply").val("またね\n");
+			setTimeout('paseClose()', 6000);	/* 6秒後にタグを閉じる */
+		}
 	}
 	$("#Talk").val(null);
 }
@@ -55,4 +74,20 @@ function comTemp(){
 		tempReply = '寒いです';
 	}
 	return tempReply;
+}
+
+function autoTalk(){
+	var reply;
+	var rand = 0;
+	
+	if (rand < autoReply.length){
+		rand = Math.floor(Math.random() * autoReply.length);
+	}
+	reply = $("#Reply").val(autoReply[rand]);
+
+	return reply;
+}
+/* タグを閉じるメソッド */
+function paseClose(){
+		window.open('about:blank','_self').close();
 }
