@@ -1,22 +1,26 @@
 	var date = new Date();			/* 日時に関する情報を取得 */
 	var hours = date.getHours();	/* 何時か取得 */
 	var comreply = $("#Reply").val();
-	var reply = ["おはよう", "こんにちは", "こんばんは"];
-	var temp = ["暑", "寒"];
-	var parting = ["おつかれ", "さようなら", "また"];
+	var reply = ["おはよう", "こんにちは", "こんばんは"];	/* 挨拶の配列 */
+	var temp = ["暑", "寒"];	/* 暑さの配列 */
+	var parting = ["おつかれ", "さようなら", "また"];		/* 別れの配列 */
+	var autoReply = ["何してるの？", "学校楽しい？", "元気？"];	/* 自動会話の配列 */
 	
 /* メインメソッド */
 $(function() {
 	$("#tbox").click(function() {
+		setTimeout('autoTalk()', 10000);	/* 10秒ごとに話しかけてくる */
 		comTalk();
 	});
+	
+	setTimeout('paseclose()', 6000);	/* 6秒後にタグを閉じる */
 });
 
 /* 返答メソッド */
 function comTalk(){
 	
 	if ($("#Talk").val().match(".*\n") || $("#Talk").val().match(".")){
-		$("#Reply").val("どうしましたか？");
+		$("#Reply").val("どうしたの？");
 	} else if ($("#Talk").val(null) || $("#Talk").val("\n")){
 		$("#Reply").val("なんですか？");
 	}
@@ -34,7 +38,7 @@ function comTalk(){
 	for (var i = 0; i < parting.length; i++){
 		if ($("#Talk").val().match(parting[i])){
 			$("#Reply").val("またね\n");
-			setTimeout('paseclose()', 6000);	/* 6秒後にタグを閉じる */
+			setTimeout('paseClose()', 6000);	/* 6秒後にタグを閉じる */
 		}
 	}
 	$("#Talk").val(null);
@@ -72,7 +76,18 @@ function comTemp(){
 	return tempReply;
 }
 
+function autoTalk(){
+	var reply;
+	var rand = 0;
+	
+	if (rand < autoReply.length){
+		rand = Math.floor(Math.random() * autoReply.length);
+	}
+	reply = $("#Reply").val(autoReply[rand]);
+
+	return reply;
+}
 /* タグを閉じるメソッド */
-function paseclose(){
+function paseClose(){
 		window.open('about:blank','_self').close();
 }
