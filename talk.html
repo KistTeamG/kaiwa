@@ -4,26 +4,22 @@
 <meta charset="utf-8">
 <title>会話</title>
 <link rel="stylesheet" href="style.css">
-
-<style>
-
-body {margin: 0;
-padding: 0}
-
-.position1 {top: 220px;
-left: 370px;
-position: absolute;}
-
-.position2 {left: 20px;
-position: absolute}
- 
-</style>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="talk.js"></script>
 
 </head>
 
 <body>
 
 <header>
+<form name="Form">
+<p>会話文の入力<br>
+<textarea id="Talk"></textarea><br>
+<input type="button" value="話しかける" id="tbox"><br>
+<textarea id="Reply"></textarea></p>
+
+</form>
 </header>
 
 <article>
