@@ -13,4 +13,14 @@ textarea{
 	position: absolute;}
 
 .position2 {left: 20px;
-	position: absolute;}
+	position: absolute;
+	top: -10px}
+
+textarea#Reply {position: absolute;
+top: 260px;
+left: 455px;
+opacity:0.8;
+z-index: 1;
+width: 160px;
+border: none;
+resize: none}
