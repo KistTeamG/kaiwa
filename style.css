@@ -16,6 +16,10 @@ textarea{
 <<<<<<< HEAD
 	position: absolute;
 	top: -10px}
+	
+#Reply {color: #000;
+	background-color: #fff;
+}
 
 textarea#Reply {position: absolute;
 top: 260px;
@@ -28,7 +32,4 @@ resize: none}
 =======
 	position: absolute;}
 	
-#Reply {color: #000;
-	background-color: #fff;
-}
 >>>>>>> b6622009d28b28dde0aa5fbf59acd3d86a5dbddc
