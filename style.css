@@ -8,8 +8,8 @@ textarea{
 	width: 150px;
 	height: 100px;}
 	
-.position1 {top: 60px;
-	left: 220px;
+.position1 {top: 220px;
+	left: 370px;
 	position: absolute;}
 
 .position2 {left: 20px;
@@ -22,12 +22,11 @@ textarea{
 }
 
 textarea#Reply {position: absolute;
-top: 215px;
-left: 305px;
+top: 260px;
+left: 455px;
 opacity:0.8;
 z-index: 1;
-width: 150px;
-height: 80px;
+width: 160px;
 border: none;
 resize: none}
 =======
