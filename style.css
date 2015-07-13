@@ -22,11 +22,12 @@ textarea{
 }
 
 textarea#Reply {position: absolute;
-top: 260px;
-left: 455px;
+top: 370px;
+left: 460px;
 opacity:0.8;
 z-index: 1;
-width: 160px;
+width: 140px;
+height: 80px;
 border: none;
 resize: none}
 =======
