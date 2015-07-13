@@ -1,6 +1,6 @@
 	var date = new Date();			/* 日時に関する情報を取得 */
 	var hours = date.getHours();	/* 何時か取得 */
-	var second = 1000;
+	var second = 1000;	/* 1秒 */
 	var auto = setInterval('autoTalk()', second * 10);	/* 10秒ごとに話しかけてくる */
 	var comreply = $("#Reply").val();
 	var reply = ["おはよう", "こんにちは", "こんばんは"];	/* 挨拶の配列 */
@@ -10,10 +10,11 @@
 	
 /* メインメソッド */
 $(function() {
-	$("#Reply").prop("disabled", true);
+	$("#Reply").prop("disabled", true);	/* COMのtextareaに入力できないようにする */
 	auto;
 	$("#tbox").click(function() {
 		comTalk();
+		auto = setInterval('autoTalk()', second * 10);
 	});
 });
 
@@ -40,7 +41,7 @@ function comTalk(){
 		if ($("#Talk").val().match(parting[i])){
 			$("#Reply").val("またね\n");
 			$("#tbox").prop("disabled", true);
-			setTimeout('paseClose()', 6000);	/* 6秒後にタグを閉じる */
+			setTimeout('paseClose()', second * 6);	/* 6秒後にタグを閉じる */
 		}
 	}
 	$("#Talk").val(null);
