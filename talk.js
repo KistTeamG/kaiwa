@@ -12,9 +12,14 @@
 $(function() {
 	$("#Reply").prop("disabled", true);	/* COMのtextareaに入力できないようにする */
 	auto;
-	$("#tbox").click(function() {
-		comTalk();
-		auto = setInterval('autoTalk()', second * 10);
+	$(window).keydown(function(e){
+		if(event.shiftKey){
+			if(e.keyCode === 13){
+				comTalk();
+				auto = setInterval('autoTalk()', second * 10);
+			return false;
+			}
+		}
 	});
 });
 
